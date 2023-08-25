@@ -1,0 +1,18 @@
+﻿@model MyBlog.Domains.ViewModels.CommentCreateViewModel
+
+<div class="container-page">
+    <h2 class="title-margin">Добавление комментария</h2>
+    <form method="post" asp-controller="Comment" asp-action="CreateComment" asp-route-postId="@Model.ArticleId">
+        <div style="margin-bottom: 5px">
+            <label asp-for="Text"></label><br />
+            <input class="form-control" asp-for="Text" />
+            <span asp-validation-for="Text" class="text-danger"></span>
+        </div>
+        <div>
+            <input class="btn btn-sm btn-primary" type="submit" value="Создать" />
+        </div>
+        <p>
+            <a method="get" asp-controller="Article" asp-action="GetAll">Перейти к списку всех статей </a>
+        </p>
+    </form>
+</div>

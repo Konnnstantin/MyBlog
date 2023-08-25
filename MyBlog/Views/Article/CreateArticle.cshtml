@@ -1,0 +1,44 @@
+﻿@model MyBlog.Domains.ViewModels.ArticleCreateViewModel
+
+<div class="container-page">
+    <h2 class="title-margin">Добавление статьи</h2>
+    <form method="post" asp-controller="Article" asp-action="CreateArticle">
+        <div style="margin-bottom: 5px">
+            <label asp-for="Header"></label><br />
+            <input class="form-control" asp-for="Header" />
+            <span asp-validation-for="Header" class="text-danger"></span>
+        </div>
+        <div style="margin-bottom: 5px">
+            <table>
+                <label>Теги</label>
+                @if (Model is not null)
+                {
+                    @for (int i = 0; i < Model.Tags.Count; i++)
+                    {
+                        if (i % 3 == 0)
+                        {
+                            @:
+                            <tr></tr>
+                        }
+                        <td>
+                            @Html.CheckBoxFor(_ => _.Tags[i].IsSelected)
+                            <lable class="tag-margin">@Model.Tags[i].PosTag</lable>
+                            @Html.HiddenFor(_ => _.Tags[i].Id)
+                        </td>
+                    }
+                }
+            </table>
+        </div>
+        <div style="margin-bottom: 5px">
+            <label asp-for="Content"></label><br />
+            <textarea class="form-control" id="editor" rows="10" value="" asp-for="Content"></textarea>
+            <span asp-validation-for="Content" class="text-danger"></span>
+        </div>
+        <div>
+            <input class="btn btn-sm btn-primary" type="submit" value="Создать" onclick="" />
+        </div>
+        <p>
+            <a method="get" asp-controller="Article" asp-action="GetAll">Перейти к списку всех статей </a>
+        </p>
+    </form>
+</div>

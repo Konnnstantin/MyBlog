@@ -1,0 +1,19 @@
+﻿@model MyBlog.Domains.ViewModels.TagEditViewModel
+
+<div class="container-page">
+    <h2 class="title-margin">Редактирование тега</h2>
+    <form method="post" asp-controller="Tag" asp-action="EditTag">
+        <div style="margin-bottom: 5px">
+            <label asp-for="PosTag"></label><br />
+            <input class="form-control" asp-for="PosTag" />
+            <span asp-validation-for="PosTag" class="text-danger"></span>
+            <input class="form-control" asp-for="Id" hidden />
+        </div>
+        <div>
+            <input class="btn btn-sm btn-primary" type="submit" value="Сохранить" />
+        </div>
+        <p>
+            <a method="get" asp-controller="Tag" asp-action="GetTags">Перейти к списку всех тегов </a>
+        </p>
+    </form>
+</div>

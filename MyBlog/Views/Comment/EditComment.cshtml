@@ -1,0 +1,21 @@
+﻿@model MyBlog.Domains.ViewModels.CommentEditViewModel
+
+
+
+<div class="container-page">
+    <h2 class="title-margin">Редактирование комментария</h2>
+    <form method="post" asp-controller="Comment" asp-action="EditComment">
+        <div style="margin-bottom: 5px">
+            <label asp-for="Text"></label><br />
+            <input class="form-control" asp-for="Text" />
+            <span asp-validation-for="Text" class="text-danger"></span>
+            <input class="form-control" asp-for="Id" hidden />
+        </div>
+        <div>
+            <input class="btn btn-sm btn-primary" type="submit" value="Сохранить" />
+        </div>
+        <p>
+            <a method="get" asp-controller="Article" asp-action="GetAll">Перейти к списку всех статей </a>
+        </p>
+    </form>
+</div>
